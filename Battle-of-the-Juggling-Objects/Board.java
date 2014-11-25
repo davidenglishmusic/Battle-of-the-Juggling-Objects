@@ -1,4 +1,5 @@
 import java.util.Hashtable;
+import java.util.Enumeration;
 
 /**
  * Write a description of class Board here.
@@ -21,8 +22,10 @@ public class Board
         board = new GamePiece[getRows()][getColumns()];
         setEmptySpotDisplay("");
         setStartingPositions(null);
+        populateBoard();
+        addPlayerPiecesToBoard();
     }
-    
+
     public Board(int newNumberOfRows, int newNumberOfColumns, String newEmptySpotDisplay, Hashtable<Location, GamePiece> newStartingPositions)
     {
         setRows(newNumberOfRows);
@@ -30,6 +33,8 @@ public class Board
         board = new GamePiece[getRows()][getColumns()];
         setEmptySpotDisplay(newEmptySpotDisplay);
         setStartingPositions(newStartingPositions);
+        populateBoard();
+        addPlayerPiecesToBoard();
     }
 
     public void setRows(int newNumberOfRows)
@@ -38,48 +43,48 @@ public class Board
             rows = newNumberOfRows;
         }
     }
-    
+
     public void setColumns(int newNumberOfColumns)
     {
         if(newNumberOfColumns > 0){
             columns = newNumberOfColumns;
         }
     }
-    
+
     public void setEmptySpotDisplay(String newEmptySpotDisplay)
     {
         if(newEmptySpotDisplay != null && newEmptySpotDisplay.length() == 1){
             emptySpotDisplay = newEmptySpotDisplay;
         }
     }
-    
+
     public void setStartingPositions(Hashtable<Location, GamePiece> newStartingPositions)
     {
         if(newStartingPositions != null){
             startingPositions = newStartingPositions;
         }
     }
-    
+
     public int getRows()
     {
         return rows;
     }
-    
+
     public int getColumns()
     {
         return columns;
     }
-    
+
     public String getEmptySpotDisplay()
     {
         return emptySpotDisplay;
     }
-    
+
     public Hashtable getStartingPositions()
     {
         return startingPositions;
     }
-    
+
     public void populateBoard()
     {
         for(int i = 0; i < rows; i++){
@@ -88,18 +93,23 @@ public class Board
             }
         }
     }
-       
+
     private void addPlayerPiecesToBoard()
     {
-        
+        Enumeration<Location> enumKey = startingPositions.keys();
+        while(enumKey.hasMoreElements()) {
+            Location key = enumKey.nextElement();
+            GamePiece piece = startingPositions.get(key);
+            board[key.getXPosition()][key.getYPosition()] = piece;
+        }
     }
-    
+
     public void displayBoard()
     {
         System.out.println(getBoardString());
     }
-    
-    public String getBoardString()
+
+    private String getBoardString()
     {
         String boardString = "";
         char columnLetter = 'a';

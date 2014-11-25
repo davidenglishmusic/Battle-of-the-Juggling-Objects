@@ -28,7 +28,10 @@ public class Game
      */
     public Game()
     {
-
+        startingPositions = new Hashtable<Location, GamePiece>();
+        setStartingPositions();
+        board = new Board(ROWS, COLUMNS, EMPTY_SPOT_DISPLAY, startingPositions);
+        board.displayBoard();
     }
 
     private void setStartingPositions()
@@ -37,17 +40,17 @@ public class Game
         startingPositions.put(new Location(1,2), new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
         startingPositions.put(new Location(1,3), new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
         startingPositions.put(new Location(1,4), new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put(new Location(2,2), new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put(new Location(2,3), new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put(new Location(2,4), new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(2,2), new Ball(PLAYER_ONE_BALL_DISPLAY, playerOne));
+        startingPositions.put(new Location(2,3), new Ball(PLAYER_ONE_BALL_DISPLAY, playerOne));
+        startingPositions.put(new Location(2,4), new Ball(PLAYER_ONE_BALL_DISPLAY, playerOne));
 
         //playerTwo
         startingPositions.put(new Location(5,2), new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
         startingPositions.put(new Location(5,3), new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
         startingPositions.put(new Location(5,4), new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put(new Location(4,2), new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put(new Location(4,3), new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put(new Location(4,4), new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(4,2), new Ball(PLAYER_TWO_BALL_DISPLAY, playerTwo));
+        startingPositions.put(new Location(4,3), new Ball(PLAYER_TWO_BALL_DISPLAY, playerTwo));
+        startingPositions.put(new Location(4,4), new Ball(PLAYER_TWO_BALL_DISPLAY, playerTwo));
     }
 
 }
