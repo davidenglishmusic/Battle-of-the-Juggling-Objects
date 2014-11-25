@@ -15,8 +15,18 @@ public class Torch extends GamePiece
         super(newPieceDisplay, newOwningPlayer);
     }
 
-    public boolean isLegalMove()
+    public boolean isLegalMove(Location from, Location to)
     {
-        return true;
+        if(from.getXPosition() != to.getXPosition()){
+            if(from.getYPosition() == to.getYPosition()){
+                return true;
+            }
+        }
+        if(from.getYPosition() != to.getYPosition()){
+            if(from.getXPosition() == to.getXPosition()){
+                return true;
+            }
+        }
+        return false;
     }
 }

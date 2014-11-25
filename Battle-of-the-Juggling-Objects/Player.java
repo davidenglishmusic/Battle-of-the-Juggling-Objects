@@ -7,27 +7,32 @@
  */
 public class Player
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private int playerNumber;
 
-    /**
-     * Constructor for objects of class Player
-     */
     public Player()
     {
-        // initialise instance variables
-        x = 0;
+        setPlayerNumber(0);
+    }
+    
+    public Player(int newPlayerNumber)
+    {
+        setPlayerNumber(newPlayerNumber);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    public void setPlayerNumber(int newPlayerNumber)
     {
-        // put your code here
-        return x + y;
+        if(newPlayerNumber > 0){
+            playerNumber = newPlayerNumber;
+        }
+    }
+    
+    public int getPlayerNumber()
+    {
+        return playerNumber;
+    }
+    
+    public String toString()
+    {
+        return "Player " + getPlayerNumber();
     }
 }

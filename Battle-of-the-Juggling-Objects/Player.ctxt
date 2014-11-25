@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Player()
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Player\n
-comment1.params=y
-comment1.target=int\ sampleMethod(int)
-comment1.text=\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\n\ \n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \n
-numComments=2
+comment1.params=newPlayerNumber
+comment1.target=Player(int)
+comment2.params=newPlayerNumber
+comment2.target=void\ setPlayerNumber(int)
+comment3.params=
+comment3.target=int\ getPlayerNumber()
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

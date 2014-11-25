@@ -22,6 +22,8 @@ public class Game
     private Player playerTwo;
 
     private Hashtable<Location, GamePiece> startingPositions;
+    
+    private Player currentTurn;
 
     /**
      * Constructor for objects of class Main
@@ -30,10 +32,12 @@ public class Game
     {
         startingPositions = new Hashtable<Location, GamePiece>();
         setStartingPositions();
+        playerOne = new Player();
+        playerTwo = new Player();
+        currentTurn = playerOne;
         board = new Board(ROWS, COLUMNS, EMPTY_SPOT_DISPLAY, startingPositions);
-        board.displayBoard();
     }
-
+   
     private void setStartingPositions()
     {
         //playerOne      

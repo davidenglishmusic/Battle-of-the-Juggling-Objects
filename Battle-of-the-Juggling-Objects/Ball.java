@@ -15,8 +15,13 @@ public class Ball extends GamePiece
         super(newPieceDisplay, newOwningPlayer);
     }
     
-    public boolean isLegalMove()
+    public boolean isLegalMove(Location from, Location to)
     {
-        return true;
+        if(from.getXPosition() == to.getXPosition()){
+            if(from.getYPosition() != to.getYPosition()){
+                return true;
+            }
+        }
+        return false;
     }
 }

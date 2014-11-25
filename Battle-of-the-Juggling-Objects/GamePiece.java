@@ -47,5 +47,5 @@ public abstract class GamePiece
         return getPieceDisplay();
     }
     
-    abstract public boolean isLegalMove();
+    abstract public boolean isLegalMove(Location from, Location to);
 }
