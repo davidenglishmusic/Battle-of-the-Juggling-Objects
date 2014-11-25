@@ -12,7 +12,7 @@ public class Board
     private int rows;
     private int columns;
     private String emptySpotDisplay;
-    private Hashtable startingPositions;
+    private Hashtable<Location, GamePiece> startingPositions;
 
     public Board()
     {
@@ -23,7 +23,7 @@ public class Board
         setStartingPositions(null);
     }
     
-    public Board(int newNumberOfRows, int newNumberOfColumns, String newEmptySpotDisplay, Hashtable newStartingPositions)
+    public Board(int newNumberOfRows, int newNumberOfColumns, String newEmptySpotDisplay, Hashtable<Location, GamePiece> newStartingPositions)
     {
         setRows(newNumberOfRows);
         setColumns(newNumberOfColumns);
@@ -42,7 +42,7 @@ public class Board
     public void setColumns(int newNumberOfColumns)
     {
         if(newNumberOfColumns > 0){
-            rows = newNumberOfColumns;
+            columns = newNumberOfColumns;
         }
     }
     
@@ -53,7 +53,7 @@ public class Board
         }
     }
     
-    public void setStartingPositions(Hashtable newStartingPositions)
+    public void setStartingPositions(Hashtable<Location, GamePiece> newStartingPositions)
     {
         if(newStartingPositions != null){
             startingPositions = newStartingPositions;
@@ -80,7 +80,7 @@ public class Board
         return startingPositions;
     }
     
-    private void populateBoard()
+    public void populateBoard()
     {
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < columns; j++){
@@ -88,7 +88,7 @@ public class Board
             }
         }
     }
-    
+       
     private void addPlayerPiecesToBoard()
     {
         
@@ -99,19 +99,30 @@ public class Board
         System.out.println(getBoardString());
     }
     
-    private String getBoardString()
+    public String getBoardString()
     {
         String boardString = "";
+        char columnLetter = 'a';
         for (int i = 0; i < rows; i++){
             for(int j = 0; j < columns; j++){
-                if(board[i][j] == null){
+                if(i == 0 && j == 0){
+                    boardString += " " + " ";
+                }
+                else if(i == 0){
+                    boardString += String.valueOf(columnLetter) + " ";
+                    columnLetter += 1;
+                }
+                else if(j == 0){
+                    boardString += String.valueOf(i) + " ";
+                }
+                else if(board[i][j] == null){
                     boardString += getEmptySpotDisplay() + " ";
                 }
                 else{
                     boardString += board[i][j].toString() + " ";
                 }
-                boardString += "\n";
             }
+            boardString += "\n";
         }
         return boardString;
     }

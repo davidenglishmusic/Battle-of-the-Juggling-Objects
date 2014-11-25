@@ -13,15 +13,15 @@ public class Game
     private static final String PLAYER_TWO_TORCH_DISPLAY = "t";
     private static final String PLAYER_TWO_BALL_DISPLAY = "o";
     private static final String EMPTY_SPOT_DISPLAY = "*";
-    private static final int ROWS = 5;
-    private static final int COLUMNS = 5;
+    private static final int ROWS = 6; // This includes the header row
+    private static final int COLUMNS = 6; // This includes the header column
 
     private Board board;
 
     private Player playerOne;
     private Player playerTwo;
 
-    private Hashtable<String, GamePiece> startingPositions;
+    private Hashtable<Location, GamePiece> startingPositions;
 
     /**
      * Constructor for objects of class Main
@@ -34,20 +34,20 @@ public class Game
     private void setStartingPositions()
     {
         //playerOne      
-        startingPositions.put("12", new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put("13", new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put("14", new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put("22", new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put("23", new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
-        startingPositions.put("24", new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(1,2), new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(1,3), new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(1,4), new Torch(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(2,2), new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(2,3), new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
+        startingPositions.put(new Location(2,4), new Ball(PLAYER_ONE_TORCH_DISPLAY, playerOne));
 
         //playerTwo
-        startingPositions.put("52", new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put("53", new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put("54", new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put("42", new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put("43", new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
-        startingPositions.put("44", new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(5,2), new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(5,3), new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(5,4), new Torch(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(4,2), new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(4,3), new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
+        startingPositions.put(new Location(4,4), new Ball(PLAYER_TWO_TORCH_DISPLAY, playerTwo));
     }
 
 }
