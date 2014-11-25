@@ -42,6 +42,11 @@ public abstract class GamePiece
         return pieceDisplay;
     }
     
+    public Player getOwningPlayer()
+    {
+        return owningPlayer;
+    }
+    
     public String toString()
     {
         return getPieceDisplay();

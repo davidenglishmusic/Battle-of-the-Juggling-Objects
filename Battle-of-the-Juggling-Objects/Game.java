@@ -30,10 +30,10 @@ public class Game
      */
     public Game()
     {
-        startingPositions = new Hashtable<Location, GamePiece>();
-        setStartingPositions();
         playerOne = new Player(1);
         playerTwo = new Player(2);
+        startingPositions = new Hashtable<Location, GamePiece>();
+        setStartingPositions();
         currentTurn = playerOne;
         board = new Board(ROWS, COLUMNS, EMPTY_SPOT_DISPLAY, startingPositions);
     }
@@ -59,6 +59,7 @@ public class Game
 
     public void play(){
         System.out.println(getIntroduction());
+        System.out.println(board.getBoardString());
     }
     
     private String getIntroduction(){
@@ -67,9 +68,9 @@ public class Game
         introduction += "Players will take alternating turns moving piece about the board\n";
         introduction += playerOne.toString() + ", your torches are displayed as " + PLAYER_ONE_TORCH_DISPLAY + " and your balls are display as " + PLAYER_ONE_BALL_DISPLAY + "\n";
         introduction += playerTwo.toString() + ", your torches are displayed as " + PLAYER_TWO_TORCH_DISPLAY + " and your balls are display as " + PLAYER_TWO_BALL_DISPLAY + "\n";
-        introduction += "A ball can move either up or down, but not sideways. It can can move only one space per turn.";
-        introduction += "A torch can move up or down, and also side-to-side. A torch can move any number of spaces, but only in one direction per turn.";
-        introduction += "Whoever clears the board of the other player's pieces first will victorious";
+        introduction += "A ball can move either up or down, but not sideways. It can can move only one space per turn\n";
+        introduction += "A torch can move up or down, and also side-to-side. A torch can move any number of spaces, but only in one direction per turn\n";
+        introduction += "Whoever clears the board of the other player's pieces first will be victorious\n";
         return introduction;
     }
 }

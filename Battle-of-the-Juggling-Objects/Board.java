@@ -104,12 +104,7 @@ public class Board
         }
     }
 
-    public void displayBoard()
-    {
-        System.out.println(getBoardString());
-    }
-
-    private String getBoardString()
+    public String getBoardString()
     {
         String boardString = "";
         char columnLetter = 'a';
@@ -135,5 +130,18 @@ public class Board
             boardString += "\n";
         }
         return boardString;
+    }
+
+    public int getPlayerPieceTally(Player player)
+    {
+        int tally = 0;
+        for (int i = 0; i < rows; i++){
+            for(int j = 0; j < columns; j++){
+                if(board[i][j] != null && board[i][j].getOwningPlayer() == player){
+                    tally += 1;
+                }
+            }
+        }
+        return tally;
     }
 }
