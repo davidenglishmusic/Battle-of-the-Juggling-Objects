@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=GamePiece()
+comment1.params=newPieceDisplay\ newOwningPlayer
+comment1.target=GamePiece(java.lang.String,\ Player)
+comment2.params=newPieceDisplay
+comment2.target=void\ setPieceDisplay(java.lang.String)
+comment3.params=newOwningPlayer
+comment3.target=void\ setOwningPlayer(Player)
+comment4.params=
+comment4.target=java.lang.String\ getPieceDisplay()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment6.params=
+comment6.target=boolean\ isLegalMove()
+numComments=7

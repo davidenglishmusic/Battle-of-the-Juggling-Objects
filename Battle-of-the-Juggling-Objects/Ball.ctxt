@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=newPieceDisplay\ newOwningPlayer
+comment0.target=Ball(java.lang.String,\ Player)
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Ball\n
+comment1.params=
+comment1.target=boolean\ isLegalMove()
+numComments=2
