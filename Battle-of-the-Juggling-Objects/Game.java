@@ -73,6 +73,11 @@ public class Game
     private void turn()
     {
         System.out.println(currentPlayerTurn + ", it is your turn.");
+        endTurn();
+    }
+    
+    private void endTurn()
+    {
         if(board.getPlayerPieceTally(playerTwo) == 0){
             winner = playerOne;
         }
