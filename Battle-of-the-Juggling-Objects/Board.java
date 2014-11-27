@@ -104,7 +104,7 @@ public class Board
         }
     }
 
-    public String getBoardString()
+    public String getBoard()
     {
         String boardString = "";
         char columnLetter = 'a';

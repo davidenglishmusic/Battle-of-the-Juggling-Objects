@@ -1,4 +1,6 @@
 import java.util.Hashtable;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * Write a description of class Game here.
@@ -15,6 +17,7 @@ public class Game
     private static final String EMPTY_SPOT_DISPLAY = "*";
     private static final int ROWS = 6; // This includes the header row
     private static final int COLUMNS = 6; // This includes the header column
+    private static final String COORDINATE_SPACE_COORDINATE = "\\w\\d \\w\\d";
 
     private Board board;
 
@@ -26,6 +29,9 @@ public class Game
     private Player currentPlayerTurn;
     
     private Player winner;
+    
+    private Scanner user_input;
+    private Pattern coordinate_space_coordinate;
 
     /**
      * Constructor for objects of class Main
@@ -39,6 +45,7 @@ public class Game
         setStartingPositions();
         currentPlayerTurn = playerOne;
         board = new Board(ROWS, COLUMNS, EMPTY_SPOT_DISPLAY, startingPositions);
+        user_input = new Scanner(System.in);
     }
    
     private void setStartingPositions()
@@ -64,18 +71,23 @@ public class Game
     {
         System.out.print('\u000C');
         System.out.println(getIntroduction());
-        System.out.println(board.getBoardString());
         while(winner == null){
             turn();
         }
         System.out.println(getEnding());
+        resetGame();
     }
     
     private void turn()
     {
-        System.out.println(currentPlayerTurn + ", it is your turn.");
+        boolean successfulMoveCompleted = false;
+        while(!successfulMoveCompleted){
+            System.out.println(board.getBoard());
+            System.out.print(currentPlayerTurn + " enter your move: > ");
+            String move = user_input.nextLine();
+            System.out.println(move);
+        }
         endTurn();
-        resetGame();
     }
     
     private void endTurn()
@@ -115,7 +127,7 @@ public class Game
         return ending;
     }
     
-    private void resetGame()
+    public void resetGame()
     {
         winner = null;
         currentPlayerTurn = playerOne;
