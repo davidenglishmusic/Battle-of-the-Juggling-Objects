@@ -17,7 +17,12 @@ public class Game
     private static final String EMPTY_SPOT_DISPLAY = "*";
     private static final int ROWS = 6; // This includes the header row
     private static final int COLUMNS = 6; // This includes the header column
-    private static final String COORDINATE_SPACE_COORDINATE = "\\w\\d \\w\\d";
+    private static final String COORDINATE_SPACE_COORDINATE = "\\d\\w \\d\\w";
+    private static final int TWO = 2;
+    private static final int THREE = 3;
+    private static final int FOUR = 4;
+    private static final int FIVE = 5;
+    
 
     private Board board;
 
@@ -30,8 +35,7 @@ public class Game
     
     private Player winner;
     
-    private Scanner user_input;
-    private Pattern coordinate_space_coordinate;
+    private Scanner userInput;
 
     /**
      * Constructor for objects of class Main
@@ -45,7 +49,7 @@ public class Game
         setStartingPositions();
         currentPlayerTurn = playerOne;
         board = new Board(ROWS, COLUMNS, EMPTY_SPOT_DISPLAY, startingPositions);
-        user_input = new Scanner(System.in);
+        userInput = new Scanner(System.in);
     }
    
     private void setStartingPositions()
@@ -84,10 +88,63 @@ public class Game
         while(!successfulMoveCompleted){
             System.out.println(board.getBoard());
             System.out.print(currentPlayerTurn + " enter your move: > ");
-            String move = user_input.nextLine();
-            System.out.println(move);
+            String move = userInput.nextLine();
+            if(!isValidMoveInputFormat(move)){
+                System.out.println(new InvalidMoveException("Please format your move by: coordinate space coordinate. ie. 3a 3c").getMessage());
+            }
+            else{
+                Location from = new Location(Integer.parseInt(move.substring(0,1)), convertLetterToNumber(move.substring(1,TWO)));
+                Location to = new Location(Integer.parseInt(move.substring(THREE,FOUR)), convertLetterToNumber(move.substring(FOUR,FIVE)));
+                //System.out.println("From: " + from.getXPosition() + "" + from.getYPosition());
+                //System.out.println("To : " + to.getXPosition() + "" + to.getYPosition());
+                if(!originPieceExists(from)){
+                    System.out.println(new InvalidMoveException("There is no piece there to move").getMessage());
+                }
+                else if(!pieceBelongsToPlayer(from)){
+                    System.out.println(new InvalidMoveException("The piece that you are attempting to move does not belong to you").getMessage());
+                }
+                else{
+                    successfulMoveCompleted = true;
+                }
+            }
         }
         endTurn();
+    }
+    
+    private int convertLetterToNumber(String stringLetter)
+    {
+        if(stringLetter != null && stringLetter.length() == 1){
+            char letter = stringLetter.charAt(0);
+            return letter - 'a' + 1;
+        }
+        else{
+            return 0;
+        }
+    }
+    
+    private boolean isValidMoveInputFormat(String moveInput)
+    {
+        return Pattern.matches(COORDINATE_SPACE_COORDINATE, moveInput);
+    }
+    
+    private boolean originPieceExists(Location locationOfPiece)
+    {
+        if(board.getPlayerPieceAtLocation(locationOfPiece) != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    private boolean pieceBelongsToPlayer(Location locationOfPiece)
+    {
+        if(board.getPlayerPieceAtLocation(locationOfPiece) != null && board.getPlayerPieceAtLocation(locationOfPiece).getOwningPlayer() == currentPlayerTurn){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     private void endTurn()

@@ -31,32 +31,14 @@ public class Location
             xPosition = newXPosition;
         }
     }
-    
-    public void setXPosition(String newXPosition)
-    {
-        if(newXPosition != null && newXPosition.length() == 1){
-            if(newXPosition.matches("\\p{L}") || newXPosition.matches("\\p{Lu}")){
-                xPosition = convertLetterToNumber(newXPosition);
-            }
-        }
-    }
-    
+       
     public void setYPosition(int newYPosition)
     {
         if(newYPosition > 0){
             yPosition = newYPosition;
         }
     }
-    
-    public void setYPosition(String newYPosition)
-    {
-        if(newYPosition != null && newYPosition.length() == 1){
-            if(newYPosition.matches("\\p{L}") || newYPosition.matches("\\p{Lu}")){
-                yPosition = convertLetterToNumber(newYPosition);
-            }
-        }
-    }
-    
+       
     public int getXPosition()
     {
         return xPosition;
@@ -67,14 +49,5 @@ public class Location
         return yPosition;
     }
     
-    private int convertLetterToNumber(String stringLetter)
-    {
-        if(stringLetter != null && stringLetter.length() == 1){
-            char letter = stringLetter.charAt(0);
-            return letter - 'a' + 1;
-        }
-        else{
-            return 0;
-        }
-    }
+    
 }

@@ -144,4 +144,13 @@ public class Board
         }
         return tally;
     }
+    
+    public GamePiece getPlayerPieceAtLocation(Location location)
+    {
+        if(board[location.getXPosition()][location.getYPosition()] != null)
+            return board[location.getXPosition()][location.getYPosition()];
+        else{
+            return null;
+        }
+    }
 }
