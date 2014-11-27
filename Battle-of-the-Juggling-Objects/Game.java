@@ -62,6 +62,7 @@ public class Game
 
     public void play()
     {
+        System.out.print('\u000C');
         System.out.println(getIntroduction());
         System.out.println(board.getBoardString());
         while(winner == null){
@@ -74,6 +75,7 @@ public class Game
     {
         System.out.println(currentPlayerTurn + ", it is your turn.");
         endTurn();
+        resetGame();
     }
     
     private void endTurn()
@@ -111,5 +113,12 @@ public class Game
         ending += "Congratulations " + winner.toString() + "! You have won the Battle of the Juggling Objects.\n";
         ending += "Thanks for playing!";
         return ending;
+    }
+    
+    private void resetGame()
+    {
+        winner = null;
+        currentPlayerTurn = playerOne;
+        board = new Board(ROWS, COLUMNS, EMPTY_SPOT_DISPLAY, startingPositions);
     }
 }
