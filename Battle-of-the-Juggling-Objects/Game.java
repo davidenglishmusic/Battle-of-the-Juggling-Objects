@@ -104,6 +104,9 @@ public class Game
                 else if(!destinationIsOnBoard(to)){
                     System.out.println(new InvalidMoveException("You cannot move the piece off of the board").getMessage());
                 }
+                else if(!destinationAndOriginAreTheSame(to, from)){
+                    System.out.println(new InvalidMoveException("The piece cannot stay in the same spot").getMessage());
+                }
                 else if(!checkIsLegalMoveForPiece(from, to)){
                     System.out.println(new InvalidMoveException("That is not a legal move for that piece").getMessage());
                 }
@@ -164,6 +167,16 @@ public class Game
         }
         else{
             return true;
+        }
+    }
+    
+    private boolean destinationAndOriginAreTheSame(Location origin, Location destination)
+    {
+        if(origin.getXPosition() == destination.getXPosition() && origin.getYPosition() == destination.getYPosition()){
+            return true;
+        }
+        else{
+            return false;
         }
     }
     
