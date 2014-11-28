@@ -96,22 +96,25 @@ public class Game
                 Location from = new Location(Integer.parseInt(move.substring(0,1)), convertLetterToNumber(move.substring(1,TWO)));
                 Location to = new Location(Integer.parseInt(move.substring(THREE,FOUR)), convertLetterToNumber(move.substring(FOUR,FIVE)));               
                 if(!originPieceExists(from)){
-                    System.out.println(new InvalidMoveException("There is no piece there to move").getMessage());
+                    System.out.println(new InvalidMoveException("No piece at the source location.").getMessage());
                 }
                 else if(!pieceBelongsToPlayer(from)){
-                    System.out.println(new InvalidMoveException("The piece that you are attempting to move does not belong to you").getMessage());
+                    System.out.println(new InvalidMoveException("That's not your piece.").getMessage());
                 }
                 else if(!destinationIsOnBoard(to)){
-                    System.out.println(new InvalidMoveException("You cannot move the piece off of the board").getMessage());
+                    System.out.println(new InvalidMoveException("Invalid input for destination location.").getMessage());
                 }
                 else if(!destinationAndOriginAreDifferent(to, from)){
-                    System.out.println(new InvalidMoveException("The piece cannot stay in the same spot").getMessage());
+                    System.out.println(new InvalidMoveException("Invalid move, source and destination cannot be the same.").getMessage());
                 }
                 else if(!checkIsLegalMoveForPiece(from, to)){
-                    System.out.println(new InvalidMoveException("That is not a legal move for that piece").getMessage());
+                    System.out.println(new InvalidMoveException("Invalid move for this piece.").getMessage());
                 }
                 else if(pieceBlockingRoute(from, to)){
-                    System.out.println(new InvalidMoveException("There is a piece in the way that you cannot skip over").getMessage());
+                    System.out.println(new InvalidMoveException("Path is not clear.").getMessage());
+                }
+                else if(samePlayerPieceAtDestination(to)){
+                    System.out.println(new InvalidMoveException("You can't capture your own piece.").getMessage());
                 }
                 else{
                     GamePiece pieceToMove = board.getPlayerPieceAtLocation(from);
@@ -233,6 +236,16 @@ public class Game
             }
         }
         return pieceBlockingRoute;
+    }
+    
+    private boolean samePlayerPieceAtDestination(Location destination)
+    {
+        if(board.getPlayerPieceAtLocation(destination).getOwningPlayer() == currentPlayerTurn){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
     private void endTurn()
