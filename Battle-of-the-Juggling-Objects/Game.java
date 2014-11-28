@@ -95,13 +95,14 @@ public class Game
             else{
                 Location from = new Location(Integer.parseInt(move.substring(0,1)), convertLetterToNumber(move.substring(1,TWO)));
                 Location to = new Location(Integer.parseInt(move.substring(THREE,FOUR)), convertLetterToNumber(move.substring(FOUR,FIVE)));
-                //System.out.println("From: " + from.getXPosition() + "" + from.getYPosition());
-                //System.out.println("To : " + to.getXPosition() + "" + to.getYPosition());
                 if(!originPieceExists(from)){
                     System.out.println(new InvalidMoveException("There is no piece there to move").getMessage());
                 }
                 else if(!pieceBelongsToPlayer(from)){
                     System.out.println(new InvalidMoveException("The piece that you are attempting to move does not belong to you").getMessage());
+                }
+                else if(!destinationIsOnBoard(to)){
+                    System.out.println(new InvalidMoveException("You cannot move the piece off of the board").getMessage());
                 }
                 else{
                     successfulMoveCompleted = true;
@@ -144,6 +145,19 @@ public class Game
         }
         else{
             return false;
+        }
+    }
+    
+    private boolean destinationIsOnBoard(Location destination)
+    {
+        if(destination.getXPosition() < 1 || destination.getXPosition() > board.getRows()){
+            return false;
+        }
+        else if(destination.getYPosition() < 1 || destination.getYPosition() > board.getColumns()){
+            return false;
+        }
+        else{
+            return true;
         }
     }
     
