@@ -156,6 +156,12 @@ public class Board
     
     public void setPieceAtLocation(Location location, GamePiece pieceMovingIn)
     {
+        if(location.getXPosition() >= getRows() && location.getYPosition() >= getColumns()){
+            return;
+        }
+        if(location.getXPosition() < 1 && location.getYPosition() < 1){
+            return;
+        }
         board[location.getXPosition()][location.getYPosition()] = pieceMovingIn;
     }
 }

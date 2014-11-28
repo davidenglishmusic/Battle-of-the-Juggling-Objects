@@ -31,5 +31,5 @@ comment7.target=boolean\ pieceBelongsToPlayer(Location)
 comment8.params=destination
 comment8.target=boolean\ destinationIsOnBoard(Location)
 comment9.params=origin\ destination
-comment9.target=boolean\ destinationAndOriginAreTheSame(Location,\ Location)
+comment9.target=boolean\ destinationAndOriginAreDifferent(Location,\ Location)
 numComments=16

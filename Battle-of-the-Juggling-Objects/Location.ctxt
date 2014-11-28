@@ -12,4 +12,6 @@ comment4.params=
 comment4.target=int\ getXPosition()
 comment5.params=
 comment5.target=int\ getYPosition()
-numComments=6
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

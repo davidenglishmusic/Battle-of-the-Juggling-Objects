@@ -94,7 +94,7 @@ public class Game
             }
             else{
                 Location from = new Location(Integer.parseInt(move.substring(0,1)), convertLetterToNumber(move.substring(1,TWO)));
-                Location to = new Location(Integer.parseInt(move.substring(THREE,FOUR)), convertLetterToNumber(move.substring(FOUR,FIVE)));
+                Location to = new Location(Integer.parseInt(move.substring(THREE,FOUR)), convertLetterToNumber(move.substring(FOUR,FIVE)));               
                 if(!originPieceExists(from)){
                     System.out.println(new InvalidMoveException("There is no piece there to move").getMessage());
                 }
@@ -104,7 +104,7 @@ public class Game
                 else if(!destinationIsOnBoard(to)){
                     System.out.println(new InvalidMoveException("You cannot move the piece off of the board").getMessage());
                 }
-                else if(!destinationAndOriginAreTheSame(to, from)){
+                else if(!destinationAndOriginAreDifferent(to, from)){
                     System.out.println(new InvalidMoveException("The piece cannot stay in the same spot").getMessage());
                 }
                 else if(!checkIsLegalMoveForPiece(from, to)){
@@ -162,10 +162,10 @@ public class Game
     
     private boolean destinationIsOnBoard(Location destination)
     {
-        if(destination.getXPosition() < 1 || destination.getXPosition() > board.getRows()){
+        if(destination.getXPosition() < 1 || destination.getXPosition() > board.getRows() - 1){
             return false;
         }
-        else if(destination.getYPosition() < 1 || destination.getYPosition() > board.getColumns()){
+        else if(destination.getYPosition() < 1 || destination.getYPosition() > board.getColumns() - 1){
             return false;
         }
         else{
@@ -173,13 +173,13 @@ public class Game
         }
     }
     
-    private boolean destinationAndOriginAreTheSame(Location origin, Location destination)
+    private boolean destinationAndOriginAreDifferent(Location origin, Location destination)
     {
         if(origin.getXPosition() == destination.getXPosition() && origin.getYPosition() == destination.getYPosition()){
-            return true;
+            return false;
         }
         else{
-            return false;
+            return true;
         }
     }
     
@@ -194,7 +194,7 @@ public class Game
     private boolean pieceBlockingRoute(Location origin, Location destination)
     {
         boolean pieceBlockingRoute = false;
-        if(destination.getXPosition() - origin.getXPosition() > 1){
+        if(Math.abs(destination.getXPosition() - origin.getXPosition()) > 1){
             if(destination.getXPosition() > origin.getXPosition()){
                 for(int i = origin.getXPosition() + 1; i < destination.getXPosition(); i++){
                     Location locationToTest = new Location(i, origin.getYPosition());
@@ -213,7 +213,7 @@ public class Game
                 
             }
         }
-        if(destination.getYPosition() - origin.getYPosition() > 1){
+        if(Math.abs(destination.getYPosition() - origin.getYPosition()) > 1){
             if(destination.getYPosition() > origin.getYPosition()){
                 for(int i = origin.getYPosition() + 1; i < destination.getYPosition(); i++){
                     Location locationToTest = new Location(origin.getXPosition(), i);

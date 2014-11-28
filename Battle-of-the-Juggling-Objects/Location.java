@@ -49,5 +49,8 @@ public class Location
         return yPosition;
     }
     
-    
+    public String toString()
+    {
+        return "" + getXPosition() + getYPosition();
+    }
 }

@@ -17,8 +17,8 @@ public class Ball extends GamePiece
     
     public boolean isLegalMove(Location from, Location to)
     {
-        if(from.getXPosition() == to.getXPosition()){
-            if(Math.abs(to.getYPosition() - from.getYPosition()) == 1){
+        if(from.getYPosition() == to.getYPosition()){
+            if(Math.abs(to.getXPosition() - from.getXPosition()) == 1){
                 return true;
             }
         }
