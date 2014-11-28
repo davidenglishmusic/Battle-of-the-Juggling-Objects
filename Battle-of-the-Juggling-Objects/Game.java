@@ -17,7 +17,7 @@ public class Game
     private static final String EMPTY_SPOT_DISPLAY = "*";
     private static final int ROWS = 6; // This includes the header row
     private static final int COLUMNS = 6; // This includes the header column
-    private static final String COORDINATE_SPACE_COORDINATE = "\\d\\w \\d\\w";
+    private static final String COORDINATE_SPACE_COORDINATE = "\\d[A-Za-z] \\d[A-Za-z]";
     private static final int TWO = 2;
     private static final int THREE = 3;
     private static final int FOUR = 4;
@@ -240,7 +240,7 @@ public class Game
     
     private boolean samePlayerPieceAtDestination(Location destination)
     {
-        if(board.getPlayerPieceAtLocation(destination).getOwningPlayer() == currentPlayerTurn){
+        if(board.getPlayerPieceAtLocation(destination) != null && board.getPlayerPieceAtLocation(destination).getOwningPlayer() == currentPlayerTurn){
             return true;
         }
         else{
