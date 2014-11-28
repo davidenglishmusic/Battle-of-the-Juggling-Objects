@@ -104,6 +104,12 @@ public class Game
                 else if(!destinationIsOnBoard(to)){
                     System.out.println(new InvalidMoveException("You cannot move the piece off of the board").getMessage());
                 }
+                else if(!checkIsLegalMoveForPiece(from, to)){
+                    System.out.println(new InvalidMoveException("That is not a legal move for that piece").getMessage());
+                }
+                else if(pieceBlockingRoute(from, to)){
+                    System.out.println(new InvalidMoveException("There is a piece in the way that you cannot skip over").getMessage());
+                }
                 else{
                     successfulMoveCompleted = true;
                 }
@@ -159,6 +165,58 @@ public class Game
         else{
             return true;
         }
+    }
+    
+    private boolean checkIsLegalMoveForPiece(Location origin, Location destination)
+    {
+        if(board.getPlayerPieceAtLocation(origin) != null){
+            return board.getPlayerPieceAtLocation(origin).isLegalMove(origin, destination);
+        }
+        return false;
+    }
+    
+    private boolean pieceBlockingRoute(Location origin, Location destination)
+    {
+        boolean pieceBlockingRoute = false;
+        if(destination.getXPosition() - origin.getXPosition() > 1){
+            if(destination.getXPosition() > origin.getXPosition()){
+                for(int i = origin.getXPosition() + 1; i < destination.getXPosition(); i++){
+                    Location locationToTest = new Location(i, origin.getYPosition());
+                    if(board.getPlayerPieceAtLocation(locationToTest) != null){
+                        pieceBlockingRoute = true;
+                    }
+                }
+            }
+            else{
+                for(int i = destination.getXPosition() + 1; i < origin.getXPosition(); i++){
+                    Location locationToTest = new Location(i, origin.getYPosition());
+                    if(board.getPlayerPieceAtLocation(locationToTest) != null){
+                        pieceBlockingRoute = true;
+                    }
+                }
+                
+            }
+        }
+        if(destination.getYPosition() - origin.getYPosition() > 1){
+            if(destination.getYPosition() > origin.getYPosition()){
+                for(int i = origin.getYPosition() + 1; i < destination.getYPosition(); i++){
+                    Location locationToTest = new Location(origin.getXPosition(), i);
+                    if(board.getPlayerPieceAtLocation(locationToTest) != null){
+                        pieceBlockingRoute = true;
+                    }
+                }
+            }
+            else{
+                for(int i = destination.getYPosition() + 1; i < origin.getYPosition(); i++){
+                    Location locationToTest = new Location(origin.getXPosition(), i);
+                    if(board.getPlayerPieceAtLocation(locationToTest) != null){
+                        pieceBlockingRoute = true;
+                    }
+                }
+                
+            }
+        }
+        return pieceBlockingRoute;
     }
     
     private void endTurn()
