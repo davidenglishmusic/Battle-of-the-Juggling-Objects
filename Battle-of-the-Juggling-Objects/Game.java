@@ -268,12 +268,12 @@ public class Game
     {
         String introduction = "";
         introduction += "Welcome to the Battle of the Juggling Objects\n";
-        introduction += "Players will take alternating turns moving piece about the board\n";
-        introduction += playerOne.toString() + ", your torches are displayed as " + PLAYER_ONE_TORCH_DISPLAY + " and your balls are display as " + PLAYER_ONE_BALL_DISPLAY + "\n";
-        introduction += playerTwo.toString() + ", your torches are displayed as " + PLAYER_TWO_TORCH_DISPLAY + " and your balls are display as " + PLAYER_TWO_BALL_DISPLAY + "\n";
-        introduction += "A ball can move either up or down, but not sideways. It can can move only one space per turn\n";
-        introduction += "A torch can move up or down, and also side-to-side. A torch can move any number of spaces, but only in one direction per turn\n";
-        introduction += "Whoever clears the board of the other player's pieces first will be victorious\n";
+        introduction += "Players will take alternating turns moving piece about the board.\n";
+        introduction += playerOne.toString() + ", your torches are displayed as " + PLAYER_ONE_TORCH_DISPLAY + " and your balls are displayed as " + PLAYER_ONE_BALL_DISPLAY + ".\n";
+        introduction += playerTwo.toString() + ", your torches are displayed as " + PLAYER_TWO_TORCH_DISPLAY + " and your balls are displayed as " + PLAYER_TWO_BALL_DISPLAY + ".\n";
+        introduction += "A ball can move either up or down, but not sideways. It can can move only one space per turn.\n";
+        introduction += "A torch can move up or down, and also side-to-side. A torch can move any number of spaces, but only in one direction per turn.\n";
+        introduction += "Whoever clears the board of the other player's pieces first will be victorious.\n";
         return introduction;
     }
     
