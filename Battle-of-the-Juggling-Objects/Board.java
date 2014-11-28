@@ -153,4 +153,9 @@ public class Board
             return null;
         }
     }
+    
+    public void setPieceAtLocation(Location location, GamePiece pieceMovingIn)
+    {
+        board[location.getXPosition()][location.getYPosition()] = pieceMovingIn;
+    }
 }

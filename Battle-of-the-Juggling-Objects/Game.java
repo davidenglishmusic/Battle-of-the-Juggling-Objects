@@ -114,6 +114,9 @@ public class Game
                     System.out.println(new InvalidMoveException("There is a piece in the way that you cannot skip over").getMessage());
                 }
                 else{
+                    GamePiece pieceToMove = board.getPlayerPieceAtLocation(from);
+                    board.setPieceAtLocation(to, pieceToMove);
+                    board.setPieceAtLocation(from, null);
                     successfulMoveCompleted = true;
                 }
             }
