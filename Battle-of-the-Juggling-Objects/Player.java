@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Player here.
+ * A class representing a player
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David English
+ * @version 2014.11.28
  */
 public class Player
 {

@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class GamePiece here.
+ * An abstract class representing a game piece
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David English
+ * @version 2014.11.28
  */
 public abstract class GamePiece
 {

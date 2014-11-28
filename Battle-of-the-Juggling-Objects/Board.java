@@ -2,10 +2,10 @@ import java.util.Hashtable;
 import java.util.Enumeration;
 
 /**
- * Write a description of class Board here.
+ * A class representing a board
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David English
+ * @version 2014.11.28
  */
 public class Board
 {

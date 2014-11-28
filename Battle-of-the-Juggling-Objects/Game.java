@@ -3,10 +3,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * Write a description of class Game here.
+ * A class representing a game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David English
+ * @version 2014.11.28
  */
 public class Game
 {
@@ -23,7 +23,6 @@ public class Game
     private static final int FOUR = 4;
     private static final int FIVE = 5;
     
-
     private Board board;
 
     private Player playerOne;

@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class InvalidMoveException here.
+ * A class representing an invalid move exception
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author David English
+ * @version 2014.11.28
  */
 public class InvalidMoveException extends Exception
 {
