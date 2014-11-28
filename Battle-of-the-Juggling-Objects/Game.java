@@ -90,31 +90,31 @@ public class Game
             System.out.print(currentPlayerTurn + " enter your move: > ");
             String move = userInput.nextLine();
             if(!isValidMoveInputFormat(move)){
-                System.out.println(new InvalidMoveException("Please format your move by: coordinate space coordinate. ie. 3a 3c").getMessage());
+                System.out.println(new InvalidMoveException("Please format your move by: coordinate space coordinate. ie. 3a 3c\n").getMessage());
             }
             else{
                 Location from = new Location(Integer.parseInt(move.substring(0,1)), convertLetterToNumber(move.substring(1,TWO)));
                 Location to = new Location(Integer.parseInt(move.substring(THREE,FOUR)), convertLetterToNumber(move.substring(FOUR,FIVE)));               
                 if(!originPieceExists(from)){
-                    System.out.println(new InvalidMoveException("No piece at the source location.").getMessage());
+                    System.out.println(new InvalidMoveException("No piece at the source location.\n").getMessage());
                 }
                 else if(!pieceBelongsToPlayer(from)){
-                    System.out.println(new InvalidMoveException("That's not your piece.").getMessage());
+                    System.out.println(new InvalidMoveException("That's not your piece.\n").getMessage());
                 }
                 else if(!destinationIsOnBoard(to)){
-                    System.out.println(new InvalidMoveException("Invalid input for destination location.").getMessage());
+                    System.out.println(new InvalidMoveException("Invalid input for destination location.\n").getMessage());
                 }
                 else if(!destinationAndOriginAreDifferent(to, from)){
-                    System.out.println(new InvalidMoveException("Invalid move, source and destination cannot be the same.").getMessage());
+                    System.out.println(new InvalidMoveException("Invalid move, source and destination cannot be the same.\n").getMessage());
                 }
                 else if(!checkIsLegalMoveForPiece(from, to)){
-                    System.out.println(new InvalidMoveException("Invalid move for this piece.").getMessage());
+                    System.out.println(new InvalidMoveException("Invalid move for this piece.\n").getMessage());
                 }
                 else if(pieceBlockingRoute(from, to)){
-                    System.out.println(new InvalidMoveException("Path is not clear.").getMessage());
+                    System.out.println(new InvalidMoveException("Path is not clear.\n").getMessage());
                 }
                 else if(samePlayerPieceAtDestination(to)){
-                    System.out.println(new InvalidMoveException("You can't capture your own piece.").getMessage());
+                    System.out.println(new InvalidMoveException("You can't capture your own piece.\n").getMessage());
                 }
                 else{
                     GamePiece pieceToMove = board.getPlayerPieceAtLocation(from);
