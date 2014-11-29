@@ -37,7 +37,8 @@ public class Game
     private Scanner userInput;
 
     /**
-     * Constructor for objects of class Main
+     * Game Constructor
+     *
      */
     public Game()
     {
@@ -51,6 +52,12 @@ public class Game
         userInput = new Scanner(System.in);
     }
    
+    /**
+     * Method setStartingPositions
+     *
+     * Sets up the starting positions for both player's pieces
+     *
+     */
     private void setStartingPositions()
     {
         //playerOne      
@@ -70,6 +77,12 @@ public class Game
         startingPositions.put(new Location(4,4), new Ball(PLAYER_TWO_BALL_DISPLAY, playerTwo));
     }
 
+    /**
+     * Method play
+     *
+     * Starts up the game
+     *
+     */
     public void play()
     {
         System.out.print('\u000C');
@@ -81,6 +94,12 @@ public class Game
         resetGame();
     }
     
+    /**
+     * Method turn
+     *
+     * Executes a turn
+     *
+     */
     private void turn()
     {
         boolean successfulMoveCompleted = false;
@@ -126,6 +145,12 @@ public class Game
         endTurn();
     }
     
+    /**
+     * Method convertLetterToNumber
+     *
+     * @param stringLetter the letter that needs converting to an integer
+     * @return an integer corresponding to the letter
+     */
     private int convertLetterToNumber(String stringLetter)
     {
         if(stringLetter != null && stringLetter.length() == 1){
@@ -137,11 +162,23 @@ public class Game
         }
     }
     
+    /**
+     * Method isValidMoveInputFormat
+     *
+     * @param moveInput the player's move input
+     * @return a boolean value, true if the input is in the correct format or false if it is not
+     */
     private boolean isValidMoveInputFormat(String moveInput)
     {
         return Pattern.matches(COORDINATE_SPACE_COORDINATE, moveInput);
     }
     
+    /**
+     * Method originPieceExists
+     *
+     * @param locationOfPiece the location of the origin piece
+     * @return a boolean value, true if the piece exists at the location or false if it does not
+     */
     private boolean originPieceExists(Location locationOfPiece)
     {
         if(board.getPlayerPieceAtLocation(locationOfPiece) != null){
@@ -152,6 +189,12 @@ public class Game
         }
     }
     
+    /**
+     * Method pieceBelongsToPlayer
+     *
+     * @param locationOfPiece the location of the piece
+     * @return a boolean value, true if the piece belongs to the player or false if it does not
+     */
     private boolean pieceBelongsToPlayer(Location locationOfPiece)
     {
         if(board.getPlayerPieceAtLocation(locationOfPiece) != null && board.getPlayerPieceAtLocation(locationOfPiece).getOwningPlayer() == currentPlayerTurn){
@@ -162,6 +205,12 @@ public class Game
         }
     }
     
+    /**
+     * Method destinationIsOnBoard
+     *
+     * @param destination the destination location
+     * @return a boolean value, true if the destination is on a valid part of the board or false if it is not
+     */
     private boolean destinationIsOnBoard(Location destination)
     {
         if(destination.getXPosition() < 1 || destination.getXPosition() > board.getRows() - 1){
@@ -175,6 +224,13 @@ public class Game
         }
     }
     
+    /**
+     * Method destinationAndOriginAreDifferent
+     *
+     * @param origin the origin location
+     * @param destination the destination location
+     * @return a boolean value, true if the locations are different or false if they are the same
+     */
     private boolean destinationAndOriginAreDifferent(Location origin, Location destination)
     {
         if(origin.getXPosition() == destination.getXPosition() && origin.getYPosition() == destination.getYPosition()){
@@ -185,6 +241,13 @@ public class Game
         }
     }
     
+    /**
+     * Method checkIsLegalMoveForPiece
+     *
+     * @param origin the origin location
+     * @param destination the destination location
+     * @return a boolean value, true if the move is valid for that piece or false if it is not
+     */
     private boolean checkIsLegalMoveForPiece(Location origin, Location destination)
     {
         if(board.getPlayerPieceAtLocation(origin) != null){
@@ -193,6 +256,13 @@ public class Game
         return false;
     }
     
+    /**
+     * Method pieceBlockingRoute
+     *
+     * @param origin the origin location
+     * @param destination the destination location
+     * @return a boolean value, true if a piece is blocking the route or false if there are no pieces blocking the route
+     */
     private boolean pieceBlockingRoute(Location origin, Location destination)
     {
         boolean pieceBlockingRoute = false;
@@ -237,6 +307,12 @@ public class Game
         return pieceBlockingRoute;
     }
     
+    /**
+     * Method samePlayerPieceAtDestination
+     *
+     * @param destination the destination location
+     * @return a boolean value, true if the piece at the destination location is owned by the player who is currently making their move
+     */
     private boolean samePlayerPieceAtDestination(Location destination)
     {
         if(board.getPlayerPieceAtLocation(destination) != null && board.getPlayerPieceAtLocation(destination).getOwningPlayer() == currentPlayerTurn){
@@ -247,6 +323,12 @@ public class Game
         }
     }
     
+    /**
+     * Method endTurn
+     *
+     * Checks if either of the player no longer has a any pieces and also sets the other player for their turn
+     *
+     */
     private void endTurn()
     {
         if(board.getPlayerPieceTally(playerTwo) == 0){
@@ -263,6 +345,11 @@ public class Game
         }
     }
     
+    /**
+     * Method getIntroduction
+     *
+     * @return a string of the introduction to the game
+     */
     private String getIntroduction()
     {
         String introduction = "";
@@ -276,6 +363,11 @@ public class Game
         return introduction;
     }
     
+    /**
+     * Method getEnding
+     *
+     * @return a string of the ending to the game
+     */
     private String getEnding()
     {
         String ending = "";
@@ -284,6 +376,12 @@ public class Game
         return ending;
     }
     
+    /**
+     * Method resetGame
+     *
+     * Resets the game
+     *
+     */
     public void resetGame()
     {
         winner = null;
