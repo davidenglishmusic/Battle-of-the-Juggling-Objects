@@ -15,6 +15,10 @@ public class Board
     private String emptySpotDisplay;
     private Hashtable<Location, GamePiece> startingPositions;
 
+    /**
+     * Default Board Constructor
+     *
+     */
     public Board()
     {
         setRows(0);
@@ -26,6 +30,14 @@ public class Board
         addPlayerPiecesToBoard();
     }
 
+    /**
+     * Board Constructor
+     *
+     * @param newNumberOfRows the number of rows for the board
+     * @param newNumberOfColumns the number of columns for the board
+     * @param newEmptySpotDisplay the string to represent an empty space on the board
+     * @param newStartingPositions the starting positions of both players' pieces
+     */
     public Board(int newNumberOfRows, int newNumberOfColumns, String newEmptySpotDisplay, Hashtable<Location, GamePiece> newStartingPositions)
     {
         setRows(newNumberOfRows);
@@ -37,6 +49,11 @@ public class Board
         addPlayerPiecesToBoard();
     }
 
+    /**
+     * Method setRows
+     *
+     * @param newNumberOfRows the number of rows for the board
+     */
     public void setRows(int newNumberOfRows)
     {
         if(newNumberOfRows > 0){
@@ -44,6 +61,11 @@ public class Board
         }
     }
 
+    /**
+     * Method setColumns
+     *
+     * @param newNumberOfColumns the number of columns for the board
+     */
     public void setColumns(int newNumberOfColumns)
     {
         if(newNumberOfColumns > 0){
@@ -51,6 +73,11 @@ public class Board
         }
     }
 
+    /**
+     * Method setEmptySpotDisplay
+     *
+     * @param newEmptySpotDisplay the string to represent an empty space on the board
+     */
     public void setEmptySpotDisplay(String newEmptySpotDisplay)
     {
         if(newEmptySpotDisplay != null && newEmptySpotDisplay.length() == 1){
@@ -58,6 +85,11 @@ public class Board
         }
     }
 
+    /**
+     * Method setStartingPositions
+     *
+     * @param newStartingPositions the starting positions of both players' pieces
+     */
     public void setStartingPositions(Hashtable<Location, GamePiece> newStartingPositions)
     {
         if(newStartingPositions != null){
@@ -65,26 +97,52 @@ public class Board
         }
     }
 
+    /**
+     * Method getRows
+     *
+     * @return the number of rows
+     */
     public int getRows()
     {
         return rows;
     }
 
+    /**
+     * Method getColumns
+     *
+     * @return the number of columns
+     */
     public int getColumns()
     {
         return columns;
     }
 
+    /**
+     * Method getEmptySpotDisplay
+     *
+     * @return the string representing an empty space on the board
+     */
     public String getEmptySpotDisplay()
     {
         return emptySpotDisplay;
     }
 
+    /**
+     * Method getStartingPositions
+     *
+     * @return the starting positions of both players' pieces
+     */
     public Hashtable getStartingPositions()
     {
         return startingPositions;
     }
 
+    /**
+     * Method populateBoard
+     *
+     * Populates the board with null objects
+     *
+     */
     public void populateBoard()
     {
         for(int i = 0; i < rows; i++){
@@ -94,6 +152,12 @@ public class Board
         }
     }
 
+    /**
+     * Method addPlayerPiecesToBoard
+     *
+     * Adds the player pieces to the boards based on the starting positions
+     *
+     */
     private void addPlayerPiecesToBoard()
     {
         Enumeration<Location> enumKey = startingPositions.keys();
@@ -104,6 +168,11 @@ public class Board
         }
     }
 
+    /**
+     * Method getBoard
+     *
+     * @return a string of the board in its current state
+     */
     public String getBoard()
     {
         String boardString = "";
@@ -132,6 +201,12 @@ public class Board
         return boardString;
     }
 
+    /**
+     * Method getPlayerPieceTally
+     *
+     * @param player the player to query for pieces remaining on the board
+     * @return the number of pieces of that player that are still on the board
+     */
     public int getPlayerPieceTally(Player player)
     {
         int tally = 0;
@@ -145,6 +220,12 @@ public class Board
         return tally;
     }
     
+    /**
+     * Method getPlayerPieceAtLocation
+     *
+     * @param location a location on the board
+     * @return the game piece at that position
+     */
     public GamePiece getPlayerPieceAtLocation(Location location)
     {
         if(board[location.getXPosition()][location.getYPosition()] != null)
@@ -154,6 +235,12 @@ public class Board
         }
     }
     
+    /**
+     * Method setPieceAtLocation
+     *
+     * @param location a location on the board
+     * @param pieceMovingIn the game piece to set at that position
+     */
     public void setPieceAtLocation(Location location, GamePiece pieceMovingIn)
     {
         if(location.getXPosition() >= getRows() && location.getYPosition() >= getColumns()){
