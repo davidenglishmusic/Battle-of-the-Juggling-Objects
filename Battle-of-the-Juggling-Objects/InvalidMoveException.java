@@ -8,7 +8,9 @@
 public class InvalidMoveException extends Exception
 {
     /**
-     * Constructor for objects of class InvalidMoveException
+     * InvalidMoveException Constructor
+     *
+     * @param message the message explaining to the user the source of the error
      */
     public InvalidMoveException(String message)
     {
