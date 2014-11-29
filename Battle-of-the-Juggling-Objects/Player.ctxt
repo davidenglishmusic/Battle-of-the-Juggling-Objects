@@ -1,12 +1,17 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Player()
+comment0.text=\n\ Default\ Player\ Constructor\n\n
 comment1.params=newPlayerNumber
 comment1.target=Player(int)
+comment1.text=\n\ Player\ Constructor\n\n\ @param\ newPlayerNumber\ the\ new\ player\ number\ //\ Ultimately\ it\ might\ be\ nice\ to\ get\ some\ way\ of\ generating\ this\ number\ based\ on\ a\ class\ variable\n
 comment2.params=newPlayerNumber
 comment2.target=void\ setPlayerNumber(int)
+comment2.text=\n\ Method\ setPlayerNumber\n\n\ @param\ newPlayerNumber\ the\ new\ player\ number\n
 comment3.params=
 comment3.target=int\ getPlayerNumber()
+comment3.text=\n\ Method\ getPlayerNumber\n\n\ @return\ the\ player\ number\n
 comment4.params=
 comment4.target=java.lang.String\ toString()
+comment4.text=\n\ Method\ toString\n\n\ @return\ a\ string\ containing\ the\ word\ player\ and\ their\ particular\ player\ number\n
 numComments=5
