@@ -1,7 +1,11 @@
 #BlueJ class context
-comment0.params=newPieceDisplay\ newOwningPlayer
-comment0.target=Torch(java.lang.String,\ Player)
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Torch\n
-comment1.params=from\ to
-comment1.target=boolean\ isLegalMove(Location,\ Location)
-numComments=2
+comment0.params=
+comment0.target=Torch()
+comment0.text=\n\ Default\ Torch\ Constructor\n\n
+comment1.params=newPieceDisplay\ newOwningPlayer
+comment1.target=Torch(java.lang.String,\ Player)
+comment1.text=\n\ Torch\ Constructor\n\n\ @param\ newPieceDisplay\ a\ string\ to\ represent\ the\ look\ of\ the\ piece\n\ @param\ newOwningPlayer\ the\ player\ who\ owns\ the\ particular\ piece\n
+comment2.params=from\ to
+comment2.target=boolean\ isLegalMove(Location,\ Location)
+comment2.text=\n\ Method\ isLegalMove\n\n\ @param\ from\ the\ origin\ location\n\ @param\ to\ the\ destination\ location\n\ @return\ a\ boolean\ value,\ true\ if\ the\ move\ is\ legal\ for\ that\ piece\ or\ false\ if\ it\ is\ not\n
+numComments=3
