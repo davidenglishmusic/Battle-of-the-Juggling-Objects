@@ -1,17 +1,23 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Location()
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Location\n
+comment0.text=\n\ Default\ Location\ Constructor\n\n
 comment1.params=newXPosition\ newYPosition
 comment1.target=Location(int,\ int)
+comment1.text=\n\ Location\ Constructor\n\n\ @param\ newXPosition\ a\ horizontal\ position\n\ @param\ newYPosition\ a\ vertical\ position\n
 comment2.params=newXPosition
 comment2.target=void\ setXPosition(int)
+comment2.text=\n\ Method\ setXPosition\n\n\ @param\ newXPosition\ a\ horizontal\ position\n
 comment3.params=newYPosition
 comment3.target=void\ setYPosition(int)
+comment3.text=\n\ Method\ setYPosition\n\n\ @param\ newYPosition\ a\ vertical\ position\n
 comment4.params=
 comment4.target=int\ getXPosition()
+comment4.text=\n\ Method\ getXPosition\n\n\ @return\ the\ horizontal\ position\n
 comment5.params=
 comment5.target=int\ getYPosition()
+comment5.text=\n\ Method\ getYPosition\n\n\ @return\ the\ vertical\ position\n
 comment6.params=
 comment6.target=java.lang.String\ toString()
+comment6.text=\n\ Method\ toString\n\n\ @return\ a\ string\ comprised\ of\ the\ horizontal\ and\ vertical\ positions\n
 numComments=7
